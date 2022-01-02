@@ -4,15 +4,19 @@ import javax.annotation.PostConstruct;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@Configuration()
 public class AppConf {
 
+    private static Integer counter = 0;
+    public static Integer testBeanFromInit;
+
     @Bean
-    public String getTestBean() {
-        return "";
+    public Integer getTestBean() {
+        return ++counter;
     }
+
     @PostConstruct
     public void init() {
-        getTestBean();
+        testBeanFromInit = getTestBean();
     }
 }
