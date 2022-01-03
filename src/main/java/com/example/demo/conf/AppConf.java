@@ -8,15 +8,10 @@ import org.springframework.context.annotation.Configuration;
 public class AppConf {
 
     private static Integer counter = 0;
-    public static Integer testBeanFromInit;
 
     @Bean
     public Integer getTestBean() {
         return ++counter;
     }
 
-    @PostConstruct
-    public void init() {
-        testBeanFromInit = getTestBean();
-    }
 }
